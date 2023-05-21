@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF=8">
+	<title> Prediction page</title>
+	<link rel="shortcut icon" type="x-icon" href="https://i.ibb.co/VH7qsyW/Google-Chrome-icon-February-2022-svg.png">
+	<style>
+		* {
+			border-collapse: separate;
+		}
+
+		.main {
+			position: absolute;
+			top: 50px;
+			right: 30%;
+			width: 600px;
+			background-color: #e6f1e6;
+			border-radius: 15px;
+			align-items: center;
+			height: 72vh;
+			border: 1.5px solid blue;
+
+		}
+
+		.menu-bar .table {
+			margin-left: -150px;
+
+		}
+
+		h1 {
+			font-family: Times New Roman;
+			margin: 20px, 0;
+			color: rgb(18, 17, 17);
+			font-size: 30px;
+			font-weight: lighter;
+			animation-delay: 3.5s;
+			font-style: italic;
+		}
+
+		input[type=submit] {
+			background-color: rgb(127, 216, 131);
+			border: 1px solid black;
+			color: rgb(23, 22, 22);
+			padding: 10px 16px;
+			cursor: pointer;
+			margin-top: 15px;
+			border-radius: 10px;
+		}
+
+		input {
+			padding: 20px, 0;
+			margin: 20px, 0;
+		}
+
+		input:hover {
+			color: rgb(127, 216, 131);
+			background-color: rgb(23, 22, 22);
+			;
+		}
+
+		p {
+			color: #ffffff;
+		}
+
+		.row em {
+			color: white;
+            background: blue;
+			font-weight: bolder;
+			font-style: italic;
+		}
+
+        .row em_red {
+			color: red;
+			font-weight: bolder;
+			font-style: italic;
+		}
+
+        .row em_green {
+			color: green;
+			font-weight: bolder;
+			font-style: italic;
+		}
+
+		.main .bold {
+			font-style: italic;
+		}
+
+		.wrapper .predict {
+			font-weight: bold;
+
+		}
+
+		.logo .title {
+			font-size: 20px;
+			margin-left: 30%;
+
+		}
+
+		.gfg {
+			color: green;
+			font-weight: bold;
+		}
+
+		.bold {
+			font-size: 17px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+
+		<p><em>WELCOME TO THE PREDICT PAGE</em></P>
+		<div align='center' class="main">
+			<h1 class="gfg">FAKE NEWS</h1>
+			<form action="result" method="POST">
+                {% csrf_token %}
+				<table>
+
+					<tr>
+						<td align="right"><span class="bold">title :</span></td>
+						<td align="left"><input type="text" name="title"></td>
+					</tr>
+					<tr>
+						<td align="right"><span class="bold">author :</span></td>
+						<td align="left"><input type="text" name="author"></td>
+					</tr>
+					<tr>
+						<td align="right"><span class="bold">text :</span></td>
+						<td align="left"><input type="text" name="text"></td>
+					</tr>
+
+				</table>
+				<br>
+				<input class="predict" type="submit" value="PREDICT">
+			</form>
+			<div class="row">
+				<h2>Title of the new : {{title}}</h2>
+				<h2><em>{{prediction}}</em></h2>
+                <h2><em_green>Real probability : {{prob_real}} % </em_green></h2>
+                <h2><em_red>Fake probability : {{prob_fake}} % </em_red></h2>
+			</div>
+</body>
+
+</html>
